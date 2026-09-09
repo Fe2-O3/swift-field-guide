@@ -143,12 +143,12 @@
 <header>
   <div class="kicker">Plate Series &middot; Swift &amp; iOS &middot; For Agent Naturalists</div>
   <h1>Swift <em>Field Guide</em></h1>
-  <p class="subtitle">Eighteen species of hard-won Swift knowledge, consolidated from the two
+  <p class="subtitle">Twenty-two species of hard-won Swift knowledge, consolidated from the two
   most-starred Swift agent-skill packs on GitHub (<em>twostraws</em> and <em>AvdLee</em>, both MIT),
   merged, de-duplicated, and brought current &mdash; for Claude Code, Codex, OpenCode, and
   any agent that reads SKILL.md.</p>
   <div class="stats">
-    <div class="stat"><b>18</b><span>species</span></div>
+    <div class="stat"><b>22</b><span>species</span></div>
     <div class="stat"><b>~40&rarr;17</b><span>consolidated</span></div>
     <div class="stat"><b>100+</b><span>reference files</span></div>
     <div class="stat"><b>MIT</b><span>license</span></div>
@@ -158,6 +158,7 @@
 <nav class="families">
   <a href="#language">Language</a>
   <a href="#ui">UI</a>
+  <a href="#motion">Motion</a>
   <a href="#platform">Platform</a>
   <a href="#data">Data</a>
   <a href="#testing">Testing</a>
@@ -213,6 +214,37 @@
         <p class="binomial">Tactus vibrans</p>
         <p><code>UIFeedbackGenerator</code> and Core Haptics patterns for confirmations, errors, and custom tactile experiences.</p>
         <p class="field-note">Felt, never seen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="family" id="motion">
+    <h2>Motion</h2>
+    <p class="latin">Class Motus &mdash; the craft of movement, credited to Emil Kowalski's philosophy</p>
+    <div class="plates">
+      <div class="plate"><span class="no">19</span>
+        <h3>animate</h3>
+        <p class="binomial">Motus fabricatus</p>
+        <p>Builds an animation from scratch, deciding in order: should it animate at all, what purpose, which tool, which properties, which curve and duration, how it interrupts, how it exits &mdash; then writes the implementation.</p>
+        <p class="field-note">Written to pass its own review the first time.</p>
+      </div>
+      <div class="plate"><span class="no">20</span>
+        <h3>find-animation-opportunities</h3>
+        <p class="binomial">Temperantia motus</p>
+        <p>Read-only scout: finds what should animate, rejects what shouldn't, proposes exact values. Defining trait: restraint.</p>
+        <p class="field-note">Sometimes the best animation is no animation.</p>
+      </div>
+      <div class="plate"><span class="no">21</span>
+        <h3>improve-animations</h3>
+        <p class="binomial">Emendator motus</p>
+        <p>Senior motion advisor: audits a codebase's motion, returns a prioritized audit with self-contained implementation plans for other agents to execute. Plans, never unsupervised edits.</p>
+        <p class="field-note">Advises the fleet; cheaper models execute.</p>
+      </div>
+      <div class="plate"><span class="no">22</span>
+        <h3>review-animations</h3>
+        <p class="binomial">Censor severus</p>
+        <p>Reviews motion code against Emil Kowalski's craft bar. Default to flagging; approval is earned.</p>
+        <p class="field-note">Has never approved a first draft.</p>
       </div>
     </div>
   </section>
@@ -330,7 +362,7 @@
     <span class="mono">swiftui</span>, <span class="mono">swift-concurrency</span>, and
     <span class="mono">swift-diagnostics</span>. Adopt the rest as your project needs them.</p>
     <div class="install">
-<pre><span class="c"># install all eighteen</span>
+<pre><span class="c"># install all twenty-two</span>
 git clone https://github.com/Fe2-O3/swift-field-guide.git
 cd swift-field-guide &amp;&amp; for d in */; do cp -R "$d" ~/.claude/skills/; done</pre>
     </div>

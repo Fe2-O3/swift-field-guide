@@ -2,12 +2,12 @@
 
 # Swift Field Guide
 
-**Eighteen species of hard-won Swift knowledge for AI coding agents.**
+**Twenty-two species of hard-won Swift knowledge for AI coding agents.**
 
 *Not prompts. Reference libraries your agent loads before it starts guessing from memory.*
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-8c3c22.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-18_species-a5492a.svg)](#-the-catalog)
+[![Skills](https://img.shields.io/badge/skills-22_species-a5492a.svg)](#-the-catalog)
 [![Format](https://img.shields.io/badge/format-SKILL.md-6b5c44.svg)](#-install)
 [![Built on](https://img.shields.io/badge/built%20on-4%20giant%20packs-8a6f4d.svg)](#-standing-on-giants)
 
@@ -21,8 +21,8 @@ Most agent skills die of two causes: **overlap** (ten skills fighting over the s
 none loads reliably) and **staleness** (APIs from two OS generations ago). This guide went the
 other way — roughly forty overlapping skills from the two most-starred Swift skill packs on GitHub
 were merged, de-duplicated, brought current, and pruned into **seventeen** — then one more was
-adopted from the community, a trimmed MIT edition of the most-starred iOS simulator skill.
-Each has one job and one reference router.
+adopted from the community, a trimmed MIT edition of the most-starred iOS simulator skill, and a
+four-skill animation family completed the guide. Each has one job and one reference router.
 
 | The old way | This guide |
 |---|---|
@@ -47,6 +47,10 @@ What's different here: **fewer, bigger skills** — one router per domain instea
 topic — plus deprecation tracking, Instruments trace analysis, and documented disagreements
 between sources instead of false consensus. Full credit trail in [ATTRIBUTION.md](ATTRIBUTION.md).
 
+The animation family's craft bar is distilled from Emil Kowalski's published design-engineering
+philosophy ([emilkowal.ski](https://emilkowal.ski), [animations.dev](https://animations.dev)) —
+credited in every file that uses it, and in [ATTRIBUTION.md](ATTRIBUTION.md).
+
 ## 📖 The catalog
 
 ### Language
@@ -64,6 +68,15 @@ between sources instead of false consensus. Full credit trail in [ATTRIBUTION.md
 | **swiftui** | The flagship. Writing, reviewing, refactoring SwiftUI: state, gestures, adaptive layout, navigation, architecture choice (MVVM vs TCA vs vanilla), Liquid Glass — plus Instruments `.trace` analysis for hangs and hitches. |
 | **ios-hig** | HIG compliance: accessibility, Dynamic Type, dark mode, 44pt targets, animation & haptics, permissions. |
 | **haptics** | `UIFeedbackGenerator` and Core Haptics patterns for confirmations, errors, and custom tactile experiences. |
+
+### Motion
+
+| Skill | What it does |
+|---|---|
+| **animate** | Builds an animation from scratch, deciding in order: should it animate at all, what purpose, which tool, which properties, which curve and duration, how it interrupts, how it exits — then writes the implementation. |
+| **find-animation-opportunities** | Read-only scout: finds what should animate, rejects what shouldn't, proposes exact values. Premise: sometimes the best animation is no animation. |
+| **improve-animations** | Senior motion advisor: audits a codebase's motion, returns a prioritized audit with self-contained implementation plans for other agents to execute. |
+| **review-animations** | Reviews motion code against Emil Kowalski's craft bar. Default to flagging; approval is earned. |
 
 ### Platform
 
@@ -123,7 +136,7 @@ mkdir -p ~/.claude/skills
 for d in */; do cp -R "$d" ~/.claude/skills/; done
 ```
 
-Every top-level directory in this repo is a skill, so the loop copies exactly the eighteen.
+Every top-level directory in this repo is a skill, so the loop copies exactly the twenty-two.
 Prefer per-project? Copy into `<project>/.claude/skills/` instead.
 
 **Codex / OpenCode / anything else**
@@ -165,13 +178,18 @@ release — so the skill ages forward, not backward.
 ## FAQ
 
 <details>
+<summary><b>Is the animation family iOS-specific?</b></summary>
+No — it's platform-agnostic motion craft (what to animate, curves, durations, interruption, exit). It applies directly to SwiftUI transitions just as much as any other UI stack. The craft bar is credited to Emil Kowalski's published philosophy throughout.
+</details>
+
+<details>
 <summary><b>Is ios-simulator-skill yours?</b></summary>
 It's a trimmed adaptation of <a href="https://github.com/conorluddy/ios-simulator-skill">Conor Luddy's ios-simulator-skill</a> (MIT), vendored with permission of license. For the maintained upstream version — newer launch flags and a bigger script package — use his repo. The <code>LICENSE.md</code> inside the skill directory is his original.
 </details>
 
 <details>
-<summary><b>Why is the animation suite not in this repo?</b></summary>
-Animation craft skills (and others in active development) are kept separate. This repo is the stable, Swift-and-iOS core.
+<summary><b>Why is there no animation suite in the source packs?</b></summary>
+Motion craft isn't part of the twostraws/AvdLee packs — this family was authored in-house, with its standards credited to Emil Kowalski's published philosophy.
 </details>
 
 <details>
@@ -191,6 +209,6 @@ The <code>swiftui</code> skill tracks deprecations in <code>latest-apis.md</code
 **[License: MIT](LICENSE)** · Credits in [ATTRIBUTION.md](ATTRIBUTION.md) ·
 Fancy illustrated edition: [index.html](index.html)
 
-*Eighteen species. Zero duplicates. Current as of Xcode 26.*
+*Twenty-two species. Zero duplicates. Current as of Xcode 26.*
 
 </div>

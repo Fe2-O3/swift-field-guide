@@ -20,6 +20,15 @@ Specific inheritances:
 - Where merged sources genuinely disagreed, the reference files flag the conflict instead of
   presenting a false consensus.
 
+## Emil Kowalski
+
+The four animation skills (`animate`, `find-animation-opportunities`, `improve-animations`,
+`review-animations`) enforce a craft bar distilled from the published design-engineering
+philosophy of [Emil Kowalski](https://emilkowal.ski) — including his essay
+["You Don't Need Animations"](https://emilkowal.ski/ui/you-dont-need-animations) — and his
+[animations.dev](https://animations.dev) course. Every file that applies the bar credits it
+inline. Not affiliated; if these skills save you time, go read his essays and take his course.
+
 ## Also in the family
 
 - **[ios-simulator-skill](https://github.com/conorluddy/ios-simulator-skill)** — Conor Luddy.
