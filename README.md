@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-8c3c22.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-22_species-a5492a.svg)](#-the-catalog)
 [![Format](https://img.shields.io/badge/format-SKILL.md-6b5c44.svg)](#-install)
-[![Built on](https://img.shields.io/badge/built%20on-4%20giant%20packs-8a6f4d.svg)](#-standing-on-giants)
+[![Built on](https://img.shields.io/badge/built%20on-3%20giant%20packs-8a6f4d.svg)](#-standing-on-giants)
 
 **Claude Code · Codex · OpenCode · any agent that reads SKILL.md**
 
@@ -34,14 +34,13 @@ four-skill animation family completed the guide. Each has one job and one refere
 ## 🏛 Standing on giants
 
 This guide is built on the most-starred open-source Swift agent-skill packs on GitHub. Two were
-merged and consolidated into it; two more complete the set below. Go star them all:
+merged and consolidated into it; one is vendored inside. Go star them all:
 
 | Pack | Author | Stars | License | How it's used |
 |---|---|---|---|---|
 | [SwiftUI-Agent-Skill](https://github.com/twostraws/SwiftUI-Agent-Skill) (+ Concurrency, Testing, SwiftData) | Paul Hudson ([@twostraws](https://github.com/twostraws)) | 4.7k+ | MIT | merged & consolidated |
 | [SwiftUI-Agent-Skill](https://github.com/AvdLee/SwiftUI-Agent-Skill) (+ Concurrency, Core Data, Xcode-Optimization) | Antoine van der Lee ([@AvdLee](https://github.com/AvdLee)) | 3.5k+ | MIT | merged & consolidated |
 | [ios-simulator-skill](https://github.com/conorluddy/ios-simulator-skill) | Conor Luddy ([@conorluddy](https://github.com/conorluddy)) | 1.2k+ | MIT | vendored, trimmed |
-| [swift-ios-skills](https://github.com/dpearson2699/swift-ios-skills) — 100+ framework skills | dpearson2699 | 1.1k+ | PolyForm Perimeter | in daily use, upstream only |
 
 What's different here: **fewer, bigger skills** — one router per domain instead of one repo per
 topic — plus deprecation tracking, Instruments trace analysis, and documented disagreements
@@ -50,6 +49,14 @@ between sources instead of false consensus. Full credit trail in [ATTRIBUTION.md
 The animation family's craft bar is distilled from Emil Kowalski's published design-engineering
 philosophy ([emilkowal.ski](https://emilkowal.ski), [animations.dev](https://animations.dev)) —
 credited in every file that uses it, and in [ATTRIBUTION.md](ATTRIBUTION.md).
+
+## 🧭 Also try
+
+- **[swift-ios-skills](https://github.com/dpearson2699/swift-ios-skills)** by dpearson2699 —
+  100+ framework skills (App Intents, CloudKit, WidgetKit, CarPlay, Core ML…), covering the
+  deep per-framework territory this guide deliberately doesn't. **Free to use**; PolyForm
+  Perimeter licensed, which means it isn't redistributed here — clone it from upstream and
+  pair it with this guide.
 
 ## 📖 The catalog
 

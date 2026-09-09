@@ -36,8 +36,9 @@ inline. Not affiliated; if these skills save you time, go read his essays and ta
   the skill directory; use his repo for the maintained upstream with newer launch flags and the
   full script package.
 - **[swift-ios-skills](https://github.com/dpearson2699/swift-ios-skills)** — dpearson2699.
-  PolyForm Perimeter 1.0.0 licensed; 100+ framework skills for iOS 26+. Used daily here but
-  **not redistributed** — his license forbids competing distributions, so go upstream for it.
+  PolyForm Perimeter 1.0.0 licensed; 86 framework skills for iOS 26+. Recommended as a
+  companion pack but **not redistributed and not included** — his license forbids distribution
+  inside a competing skills repo. Clone from upstream and pair it with this guide.
 
 ## Tooling notes
 
