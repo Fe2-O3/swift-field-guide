@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swift Field Guide — Agent Skills for Swift, SwiftUI &amp; iOS</title>
+<meta name="description" content="17 battle-tested agent skills for Swift, SwiftUI, and iOS development. Reference libraries for Claude Code, Codex, and any agent that reads SKILL.md.">
+<style>
+  :root {
+    --paper: #f4ecdb;
+    --paper-deep: #ece0c8;
+    --ink: #3b3020;
+    --ink-soft: #6b5c44;
+    --rust: #a5492a;
+    --rust-soft: #c0764f;
+    --sepia: #8a6f4d;
+    --line: #d8c9a8;
+    --card: #faf5e8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(255,252,240,.6), transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(160,120,70,.08), transparent 55%);
+    color: var(--ink);
+    font-family: Charter, Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+  }
+  .plate-border {
+    max-width: 1100px;
+    margin: 2.5rem auto;
+    border: 1px solid var(--sepia);
+    outline: 4px double var(--sepia);
+    outline-offset: 5px;
+    background: var(--paper);
+    box-shadow: 0 8px 40px rgba(80,60,30,.18);
+  }
+  header { text-align: center; padding: 4.5rem 2rem 2.5rem; border-bottom: 1px solid var(--line); }
+  .kicker {
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: .72rem; letter-spacing: .35em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 1.2rem;
+  }
+  h1 {
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 700; letter-spacing: -.01em; line-height: 1.05;
+  }
+  h1 em { font-style: italic; font-weight: 400; color: var(--sepia); }
+  .subtitle {
+    max-width: 640px; margin: 1.4rem auto 0; font-size: 1.08rem; color: var(--ink-soft);
+    font-style: italic;
+  }
+  .stats { display: flex; justify-content: center; gap: 3rem; margin-top: 2.2rem; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat b { display: block; font-size: 2rem; font-weight: 700; color: var(--rust); }
+  .stat span { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+
+  nav.families { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; padding: 1.6rem 2rem; border-bottom: 1px solid var(--line); }
+  nav.families a {
+    font-family: "SF Mono", Menlo, monospace; font-size: .74rem; letter-spacing: .12em;
+    text-transform: uppercase; text-decoration: none; color: var(--ink-soft);
+    padding: .45rem .9rem; border: 1px solid var(--line); border-radius: 999px;
+    transition: all .18s ease;
+  }
+  nav.families a:hover { border-color: var(--rust); color: var(--rust); background: var(--card); }
+
+  main { padding: 1rem 2rem 3rem; }
+  .family { margin-top: 2.5rem; }
+  .family > h2 {
+    font-size: 1.05rem; letter-spacing: .3em; text-transform: uppercase; font-weight: 600;
+    color: var(--sepia); display: flex; align-items: center; gap: 1.2rem; margin-bottom: .4rem;
+  }
+  .family > h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .family > .latin {
+    font-style: italic; color: var(--rust-soft); font-size: .92rem; margin-bottom: 1.4rem;
+  }
+  .plates { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; }
+  .plate {
+    background: var(--card); border: 1px solid var(--line); padding: 1.4rem 1.4rem 1.2rem;
+    position: relative; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .plate:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(80,60,30,.14); border-color: var(--sepia); }
+  .plate .no {
+    position: absolute; top: 1rem; right: 1.2rem;
+    font-family: "SF Mono", Menlo, monospace; font-size: .68rem; color: var(--sepia);
+    letter-spacing: .1em;
+  }
+  .plate h3 { font-size: 1.35rem; font-weight: 700; letter-spacing: -.01em; }
+  .plate .binomial { font-style: italic; color: var(--rust); font-size: .92rem; margin: .15rem 0 .8rem; }
+  .plate p { font-size: .95rem; color: var(--ink-soft); }
+  .plate .field-note {
+    margin-top: .9rem; padding-top: .7rem; border-top: 1px dashed var(--line);
+    font-size: .8rem; color: var(--sepia); font-style: italic;
+  }
+  .plate code, .mono {
+    font-family: "SF Mono", Menlo, monospace; font-size: .84em;
+    background: var(--paper-deep); padding: .1em .35em; border-radius: 3px;
+  }
+
+  .callout {
+    margin: 3.5rem 0 0; padding: 2.2rem 2.4rem;
+    border: 1px solid var(--rust-soft); background: var(--card);
+    text-align: center;
+  }
+  .callout h2 { font-size: 1.6rem; margin-bottom: .6rem; }
+  .callout p { color: var(--ink-soft); max-width: 560px; margin: 0 auto 1.4rem; }
+  .btn {
+    display: inline-block; text-decoration: none; font-family: "SF Mono", Menlo, monospace;
+    font-size: .85rem; letter-spacing: .1em; color: var(--paper);
+    background: var(--rust); padding: .8rem 1.8rem; border-radius: 4px;
+    transition: background .18s ease;
+  }
+  .btn:hover { background: #8c3c22; }
+  .btn.ghost { background: transparent; color: var(--rust); border: 1px solid var(--rust); margin-left: .8rem; }
+  .btn.ghost:hover { background: var(--rust); color: var(--paper); }
+
+  .install { margin-top: 1.2rem; }
+  .install pre {
+    text-align: left; display: inline-block; font-family: "SF Mono", Menlo, monospace;
+    font-size: .8rem; background: #2e2418; color: #e8dcc0; padding: 1rem 1.4rem;
+    border-radius: 6px; overflow-x: auto; line-height: 1.7;
+  }
+  .install pre .c { color: #9d8a66; }
+
+  footer {
+    margin-top: 3rem; padding: 1.6rem 2rem; border-top: 1px solid var(--line);
+    text-align: center; font-size: .82rem; color: var(--ink-soft);
+  }
+  footer a { color: var(--rust); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .plate-border { margin: 1rem; }
+    .stats { gap: 1.6rem; }
+    .btn.ghost { margin-left: 0; margin-top: .8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="plate-border">
+
+<header>
+  <div class="kicker">Plate Series &middot; Swift &amp; iOS &middot; For Agent Naturalists</div>
+  <h1>Swift <em>Field Guide</em></h1>
+  <p class="subtitle">Seventeen species of hard-won Swift knowledge, collected from roughly forty
+  overlapping skills in the wild, merged, de-duplicated, and brought current &mdash; for Claude Code,
+  Codex, OpenCode, and any agent that reads SKILL.md.</p>
+  <div class="stats">
+    <div class="stat"><b>17</b><span>species</span></div>
+    <div class="stat"><b>~40&rarr;17</b><span>consolidated</span></div>
+    <div class="stat"><b>100+</b><span>reference files</span></div>
+    <div class="stat"><b>MIT</b><span>license</span></div>
+  </div>
+</header>
+
+<nav class="families">
+  <a href="#language">Language</a>
+  <a href="#ui">UI</a>
+  <a href="#platform">Platform</a>
+  <a href="#data">Data</a>
+  <a href="#testing">Testing</a>
+  <a href="#diagnostics">Diagnostics</a>
+  <a href="#ecosystem">Ecosystem</a>
+</nav>
+
+<main>
+
+  <section class="family" id="language">
+    <h2>Language</h2>
+    <p class="latin">Class Linguus Swiftus &mdash; the core tongue</p>
+    <div class="plates">
+      <div class="plate"><span class="no">01</span>
+        <h3>write-swift</h3>
+        <p class="binomial">Lingua moderna</p>
+        <p>How to write modern Swift well: value types, Swift 6 data-race safety, <code>@concurrent</code>, actors, protocols and generics, API design, performance and ARC, macros.</p>
+        <p class="field-note">Habitat: every file an agent touches.</p>
+      </div>
+      <div class="plate"><span class="no">02</span>
+        <h3>swift-concurrency</h3>
+        <p class="binomial">Acta parallelis</p>
+        <p>Tasks, actors, <code>@MainActor</code>, <code>Sendable</code>, data races, cancellation, TaskGroup patterns, Swift 6 migration &mdash; plus concurrency code review. 18 reference files, one router.</p>
+        <p class="field-note">Diets exclusively on compiler warnings.</p>
+      </div>
+      <div class="plate"><span class="no">03</span>
+        <h3>swift-style</h3>
+        <p class="binomial">Forma elegans</p>
+        <p>Conventions for clean, readable Swift: formatting, naming, organization, idiomatic patterns.</p>
+        <p class="field-note">Small range, constant presence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="family" id="ui">
+    <h2>UI</h2>
+    <p class="latin">Class Visualis &mdash; what the user touches</p>
+    <div class="plates">
+      <div class="plate"><span class="no">04</span>
+        <h3>swiftui</h3>
+        <p class="binomial">Velox declarativa</p>
+        <p>The flagship. Writing, reviewing, refactoring SwiftUI: state management, gesture composition, adaptive layout, navigation, architecture choice (MVVM vs TCA vs vanilla), Liquid Glass &mdash; plus Instruments <code>.trace</code> capture and analysis for hangs and hitches. Merged from five prior skills; ~30 reference files.</p>
+        <p class="field-note">Where two merged sources disagreed, it says so &mdash; no false consensus.</p>
+      </div>
+      <div class="plate"><span class="no">05</span>
+        <h3>ios-hig</h3>
+        <p class="binomial">Directiva humana</p>
+        <p>Human Interface Guidelines compliance: accessibility, Dynamic Type, dark mode, 44pt touch targets, animation and haptics, permission flows.</p>
+        <p class="field-note">The difference between an app and an intruder.</p>
+      </div>
+      <div class="plate"><span class="no">06</span>
+        <h3>haptics</h3>
+        <p class="binomial">Tactus vibrans</p>
+        <p><code>UIFeedbackGenerator</code> and Core Haptics patterns for confirmations, errors, and custom tactile experiences.</p>
+        <p class="field-note">Felt, never seen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="family" id="platform">
+    <h2>Platform</h2>
+    <p class="latin">Class Platformus &mdash; the terrain itself</p>
+    <div class="plates">
+      <div class="plate"><span class="no">07</span>
+        <h3>ios-26-platform</h3>
+        <p class="binomial">Platforma vitrea</p>
+        <p>iOS 26 features: Liquid Glass, new SwiftUI APIs, <code>WebView</code>, <code>Chart3D</code> &mdash; with backward compatibility discipline for iOS 17/18.</p>
+        <p class="field-note">Migratory: returns each September with new plumage.</p>
+      </div>
+      <div class="plate"><span class="no">08</span>
+        <h3>localization</h3>
+        <p class="binomial">Lingua multiplex</p>
+        <p>String Catalogs, pluralization, right-to-left layout, and modern i18n workflows.</p>
+        <p class="field-note">Speaks every locale; hardcodes nothing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="family" id="data">
+    <h2>Data</h2>
+    <p class="latin">Class Memorius &mdash; where state goes to persist</p>
+    <div class="plates">
+      <div class="plate"><span class="no">09</span>
+        <h3>swift-data</h3>
+        <p class="binomial">Memoria persistens</p>
+        <p>Core Data, SwiftData, SQLiteData, and GRDB: stack setup, threading, migrations, CloudKit sync &mdash; and, rarest of all, knowing <em>which framework to pick</em>. Merged from four skills that used to fight over the same territory.</p>
+        <p class="field-note">Four species, one range, zero turf wars.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="family" id="testing">
+    <h2>Testing</h2>
+    <p class="latin">Class Probatoris &mdash; the skeptics</p>
+    <div class="plates">
+      <div class="plate"><span class="no">10</span>
+        <h3>swift-testing</h3>
+        <p class="binomial">Probatio rigorosa</p>
+        <p><code>@Test</code>, <code>#expect</code>, <code>#require</code>, traits, parameterized tests, parallel execution and isolation &mdash; and full XCTest migration guidance.</p>
+        <p class="field-note">Believes nothing until <code>#expect</code> says so.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="family" id="diagnostics">
+    <h2>Diagnostics &amp; Performance</h2>
+    <p class="latin">Class Medicus &mdash; field surgery</p>
+    <div class="plates">
+      <div class="plate"><span class="no">11</span>
+        <h3>swift-diagnostics</h3>
+        <p class="binomial">Medicus diagnosticus</p>
+        <p>Decision trees for NavigationStack bugs, build failures, and memory leaks. Root cause in minutes, not hours. Mandatory first checks before any code changes.</p>
+        <p class="field-note">80% of "mysterious" issues are documented patterns.</p>
+      </div>
+      <div class="plate"><span class="no">12</span>
+        <h3>xcode-build</h3>
+        <p class="binomial">Aedificium celeris</p>
+        <p>The single entry point for build-speed work: benchmark clean/incremental builds, diagnose slow type-checking, audit settings and script phases &mdash; and prove the win with before/after numbers.</p>
+        <p class="field-note">No fix without a measurement.</p>
+      </div>
+      <div class="plate"><span class="no">13</span>
+        <h3>spm-build-analysis</h3>
+        <p class="binomial">Arbor dependentiarum</p>
+        <p>SPM dependency graphs, package plugins, module variants, CI build overhead, and modularization strategy.</p>
+        <p class="field-note">Lives in the shadow of long resolution logs.</p>
+      </div>
+      <div class="plate"><span class="no">14</span>
+        <h3>swift-networking</h3>
+        <p class="binomial">Connexio retis</p>
+        <p>Network.framework: <code>NWConnection</code>, UDP/TCP patterns, structured-concurrency networking, and migrating off raw sockets and URLSession streams.</p>
+        <p class="field-note">Handles transitions: WiFi to cell, mid-flight.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="family" id="ecosystem">
+    <h2>Ecosystem</h2>
+    <p class="latin">Class Sym biotae &mdash; lives with the rest</p>
+    <div class="plates">
+      <div class="plate"><span class="no">15</span>
+        <h3>composable-architecture</h3>
+        <p class="binomial">Reducer compositus</p>
+        <p>TCA in practice: <code>@Reducer</code>, <code>Store</code>, <code>Effect</code>, <code>TestStore</code>, reducer composition, effect handling, TCA navigation.</p>
+        <p class="field-note">Flocks with swiftui; respects its airspace.</p>
+      </div>
+      <div class="plate"><span class="no">16</span>
+        <h3>storekit</h3>
+        <p class="binomial">Mercator digitalis</p>
+        <p>StoreKit 2: subscriptions, consumables, non-consumables, <code>.storekit</code> configuration testing, <code>StoreManager</code> architecture, transaction verification.</p>
+        <p class="field-note">Testing-first. No live-transaction gambles.</p>
+      </div>
+      <div class="plate"><span class="no">17</span>
+        <h3>generating-swift-package-docs</h3>
+        <p class="binomial">Documenta ex nihilo</p>
+        <p>On-demand API documentation for unfamiliar Swift package dependencies &mdash; for those <code>import</code> statements nobody documented.</p>
+        <p class="field-note">Feeds on mystery imports.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="callout">
+    <h2>Start with four.</h2>
+    <p>Most Swift work an agent does is covered by <span class="mono">write-swift</span>,
+    <span class="mono">swiftui</span>, <span class="mono">swift-concurrency</span>, and
+    <span class="mono">swift-diagnostics</span>. Adopt the rest as your project needs them.</p>
+    <div class="install">
+<pre><span class="c"># install all seventeen</span>
+git clone https://github.com/Fe2-O3/swift-field-guide.git
+cd swift-field-guide &amp;&amp; for d in */; do cp -R "$d" ~/.claude/skills/; done</pre>
+    </div>
+    <p style="margin-top:1.4rem">
+      <a class="btn" href="https://github.com/Fe2-O3/swift-field-guide">View on GitHub</a>
+      <a class="btn ghost" href="https://github.com/Fe2-O3/swift-field-guide#readme">Read the README</a>
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  Swift Field Guide &middot; MIT License &middot; credits in
+  <a href="https://github.com/Fe2-O3/swift-field-guide/blob/main/ATTRIBUTION.md">ATTRIBUTION.md</a>
+  &middot; deprecation tracking via the Sosumi MCP
+</footer>
+
+</div>
+</body>
+</html>

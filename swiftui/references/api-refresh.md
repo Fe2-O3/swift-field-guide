@@ -1,0 +1,96 @@
+Adapted from Antoine van der Lee's update-swiftui-apis skill.
+
+# SwiftUI API Refresh
+
+Maintenance workflow for `latest-apis.md`: scan Apple's developer documentation via the Sosumi MCP, find SwiftUI deprecations not yet documented in the reference, and fold them into its established format. Run this after a new Xcode/iOS release.
+
+## Prerequisites
+
+- **Sosumi MCP** enabled and available (tools listed below).
+- Write access to the canonical store. This skill lives at `~/.agents/skills/swiftui` — older copies of this workflow pointed at `~/dotfiles/claude/skills/swiftui`, which is no longer the path.
+
+## Workflow
+
+### 1. Understand current coverage
+
+Read `references/latest-apis.md` to understand:
+
+- Which deprecated-to-modern transitions are already documented.
+- The version segments in use (iOS 15+, 16+, 17+, 18+, 26+).
+- The Quick Lookup Table at the bottom.
+
+### 2. Load the scan manifest
+
+Read `references/api-refresh-scan-manifest.md` (same `references/` directory). It contains the categorized list of API areas: search queries, documentation paths, and WWDC video paths to scan. Add new categories or paths as Apple introduces new APIs.
+
+### 3. Scan Apple documentation
+
+For each category in the manifest:
+
+1. Call `searchAppleDocumentation` with the listed queries to discover relevant pages.
+2. Call `fetchAppleDocumentation` with specific documentation paths to get full API details.
+3. Look for deprecation notices, "Deprecated" labels, and "Use ... instead" guidance.
+4. Note the iOS version where the modern replacement became available.
+5. Optionally call `fetchAppleVideoTranscript` for WWDC sessions that announce API changes.
+
+Batch related searches together for efficiency. Focus on finding **new** deprecations not yet in `latest-apis.md`.
+
+### 4. Compare and identify changes
+
+Compare findings against existing entries. Categorize results:
+
+- **New deprecations**: APIs not yet documented in `latest-apis.md`.
+- **Corrections**: existing entries that need updating (wrong version, better replacement available).
+- **New version segments**: if a new iOS version introduces deprecations, add a new section.
+
+### 5. Update latest-apis.md
+
+Follow the established format exactly. Each entry must include:
+
+**Section placement** — place under the correct version segment:
+
+- "Always Use (iOS 15+)" for long-deprecated APIs.
+- "When Targeting iOS 16+" / "17+" / "18+" / "26+" for version-gated changes.
+
+**Entry format:**
+
+````markdown
+**Always use `modernAPI()` instead of `deprecatedAPI()`.**
+
+```swift
+// Modern
+View()
+    .modernAPI()
+
+// Deprecated
+View()
+    .deprecatedAPI()
+```
+````
+
+**Quick Lookup Table** — add a row at the bottom of the file:
+
+```markdown
+| `deprecatedAPI()` | `modernAPI()` | iOS XX+ |
+```
+
+Keep the attribution line at the top of the file:
+
+> Based on a comparison of Apple's documentation using the Sosumi MCP, we found the latest recommended APIs to use.
+
+## Sosumi MCP Tool Reference
+
+| Tool | Parameters | Returns |
+|------|-----------|---------|
+| `searchAppleDocumentation` | `query` (string) | JSON with `results[]` containing `title`, `url`, `description`, `breadcrumbs`, `tags`, `type` |
+| `fetchAppleDocumentation` | `path` (string, e.g. `/documentation/swiftui/view/foregroundstyle(_:)`) | Markdown documentation content |
+| `fetchAppleVideoTranscript` | `path` (string, e.g. `/videos/play/wwdc2025/10133`) | Markdown transcript |
+| `fetchExternalDocumentation` | `url` (string, full https URL) | Markdown documentation content |
+
+## Tips
+
+- Start broad with `searchAppleDocumentation` queries, then drill into specific paths with `fetchAppleDocumentation`.
+- Apple's deprecation docs typically say "Deprecated" in the page and link to the replacement.
+- WWDC "What's new in SwiftUI" sessions are the best source for newly introduced replacements.
+- When unsure about the exact iOS version for a deprecation, verify by checking the "Availability" section in the fetched documentation.
+- If an API is deprecated but no direct replacement exists, note this rather than suggesting an incorrect alternative.
