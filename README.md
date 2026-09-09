@@ -2,12 +2,12 @@
 
 # Swift Field Guide
 
-**Seventeen species of hard-won Swift knowledge for AI coding agents.**
+**Eighteen species of hard-won Swift knowledge for AI coding agents.**
 
 *Not prompts. Reference libraries your agent loads before it starts guessing from memory.*
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-8c3c22.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-17_species-a5492a.svg)](#-the-catalog)
+[![Skills](https://img.shields.io/badge/skills-18_species-a5492a.svg)](#-the-catalog)
 [![Format](https://img.shields.io/badge/format-SKILL.md-6b5c44.svg)](#-install)
 [![Built from](https://img.shields.io/badge/built%20from-twostraws%20%2B%20AvdLee%20%28MIT%29-8a6f4d.svg)](#-standing-on-giants)
 
@@ -20,8 +20,9 @@
 Most agent skills die of two causes: **overlap** (ten skills fighting over the same territory, so
 none loads reliably) and **staleness** (APIs from two OS generations ago). This guide went the
 other way — roughly forty overlapping skills from the two most-starred Swift skill packs on GitHub
-were merged, de-duplicated, brought current, and pruned into **seventeen**, each with one job and
-one reference router.
+were merged, de-duplicated, brought current, and pruned into **seventeen** — then one more was
+adopted from the community, a trimmed MIT edition of the most-starred iOS simulator skill.
+Each has one job and one reference router.
 
 | The old way | This guide |
 |---|---|
@@ -43,6 +44,14 @@ GitHub. Both are MIT licensed, both are excellent standalone — go star them:
 What's different here: **fewer, bigger skills** — one router per domain instead of one repo per
 topic — plus deprecation tracking, Instruments trace analysis, and documented disagreements
 between sources instead of false consensus. Full credit trail in [ATTRIBUTION.md](ATTRIBUTION.md).
+
+**Also in the family:**
+
+- **[ios-simulator-skill](https://github.com/conorluddy/ios-simulator-skill)** by Conor Luddy —
+  ⭐1.2k, MIT. Vendored here as a trimmed edition (his full `LICENSE.md` ships inside the skill).
+- **[swift-ios-skills](https://github.com/dpearson2699/swift-ios-skills)** by dpearson2699 —
+  100+ framework skills, PolyForm Perimeter licensed. In daily use here; **not redistributed** —
+  go upstream for it, it's excellent.
 
 ## 📖 The catalog
 
@@ -89,6 +98,7 @@ between sources instead of false consensus. Full credit trail in [ATTRIBUTION.md
 | **xcode-build** | The single entry point for build-speed work: benchmark, diagnose slow type-checking, audit settings, prove the win with before/after numbers. |
 | **spm-build-analysis** | SPM dependency graphs, package plugins, module variants, CI overhead, modularization. |
 | **swift-networking** | Network.framework: `NWConnection`, UDP/TCP, structured-concurrency networking, migrating off raw sockets. |
+| **ios-simulator-skill** | 29 production-ready scripts for simulator testing, builds, and automation: semantic UI navigation, accessibility checks, lifecycle management — tuned for minimal token output. Vendored from [conorluddy's MIT original](https://github.com/conorluddy/ios-simulator-skill). |
 
 ### Ecosystem
 
@@ -119,7 +129,7 @@ mkdir -p ~/.claude/skills
 for d in */; do cp -R "$d" ~/.claude/skills/; done
 ```
 
-Every top-level directory in this repo is a skill, so the loop copies exactly the seventeen.
+Every top-level directory in this repo is a skill, so the loop copies exactly the eighteen.
 Prefer per-project? Copy into `<project>/.claude/skills/` instead.
 
 **Codex / OpenCode / anything else**
@@ -161,6 +171,11 @@ release — so the skill ages forward, not backward.
 ## FAQ
 
 <details>
+<summary><b>Is ios-simulator-skill yours?</b></summary>
+It's a trimmed adaptation of <a href="https://github.com/conorluddy/ios-simulator-skill">Conor Luddy's ios-simulator-skill</a> (MIT), vendored with permission of license. For the maintained upstream version — newer launch flags and a bigger script package — use his repo. The <code>LICENSE.md</code> inside the skill directory is his original.
+</details>
+
+<details>
 <summary><b>Why is the animation suite not in this repo?</b></summary>
 Animation craft skills (and others in active development) are kept separate. This repo is the stable, Swift-and-iOS core.
 </details>
@@ -182,6 +197,6 @@ The <code>swiftui</code> skill tracks deprecations in <code>latest-apis.md</code
 **[License: MIT](LICENSE)** · Credits in [ATTRIBUTION.md](ATTRIBUTION.md) ·
 Fancy illustrated edition: [index.html](index.html)
 
-*Seventeen species. Zero duplicates. Current as of Xcode 26.*
+*Eighteen species. Zero duplicates. Current as of Xcode 26.*
 
 </div>

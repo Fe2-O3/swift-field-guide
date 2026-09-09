@@ -20,6 +20,16 @@ Specific inheritances:
 - Where merged sources genuinely disagreed, the reference files flag the conflict instead of
   presenting a false consensus.
 
+## Also in the family
+
+- **[ios-simulator-skill](https://github.com/conorluddy/ios-simulator-skill)** — Conor Luddy.
+  Vendored in this repo as a trimmed adaptation (MIT). His original `LICENSE.md` is included in
+  the skill directory; use his repo for the maintained upstream with newer launch flags and the
+  full script package.
+- **[swift-ios-skills](https://github.com/dpearson2699/swift-ios-skills)** — dpearson2699.
+  PolyForm Perimeter 1.0.0 licensed; 100+ framework skills for iOS 26+. Used daily here but
+  **not redistributed** — his license forbids competing distributions, so go upstream for it.
+
 ## Tooling notes
 
 - `swiftui` deprecation tracking depends on the Sosumi MCP for Apple documentation access
