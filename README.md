@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-8c3c22.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-18_species-a5492a.svg)](#-the-catalog)
 [![Format](https://img.shields.io/badge/format-SKILL.md-6b5c44.svg)](#-install)
-[![Built from](https://img.shields.io/badge/built%20from-twostraws%20%2B%20AvdLee%20%28MIT%29-8a6f4d.svg)](#-standing-on-giants)
+[![Built on](https://img.shields.io/badge/built%20on-4%20giant%20packs-8a6f4d.svg)](#-standing-on-giants)
 
 **Claude Code · Codex · OpenCode · any agent that reads SKILL.md**
 
@@ -33,25 +33,19 @@ Each has one job and one reference router.
 
 ## 🏛 Standing on giants
 
-This guide is a consolidation of the **two most-starred open-source Swift agent skill packs** on
-GitHub. Both are MIT licensed, both are excellent standalone — go star them:
+This guide is built on the most-starred open-source Swift agent-skill packs on GitHub. Two were
+merged and consolidated into it; two more complete the set below. Go star them all:
 
-| Pack | Author | Stars | License |
-|---|---|---|---|
-| [SwiftUI-Agent-Skill](https://github.com/twostraws/SwiftUI-Agent-Skill) (+ Concurrency, Testing, SwiftData) | Paul Hudson ([@twostraws](https://github.com/twostraws)) | 4.7k+ | MIT |
-| [SwiftUI-Agent-Skill](https://github.com/AvdLee/SwiftUI-Agent-Skill) (+ Concurrency, Core Data, Xcode-Optimization) | Antoine van der Lee ([@AvdLee](https://github.com/AvdLee)) | 3.5k+ | MIT |
+| Pack | Author | Stars | License | How it's used |
+|---|---|---|---|---|
+| [SwiftUI-Agent-Skill](https://github.com/twostraws/SwiftUI-Agent-Skill) (+ Concurrency, Testing, SwiftData) | Paul Hudson ([@twostraws](https://github.com/twostraws)) | 4.7k+ | MIT | merged & consolidated |
+| [SwiftUI-Agent-Skill](https://github.com/AvdLee/SwiftUI-Agent-Skill) (+ Concurrency, Core Data, Xcode-Optimization) | Antoine van der Lee ([@AvdLee](https://github.com/AvdLee)) | 3.5k+ | MIT | merged & consolidated |
+| [ios-simulator-skill](https://github.com/conorluddy/ios-simulator-skill) | Conor Luddy ([@conorluddy](https://github.com/conorluddy)) | 1.2k+ | MIT | vendored, trimmed |
+| [swift-ios-skills](https://github.com/dpearson2699/swift-ios-skills) — 100+ framework skills | dpearson2699 | 1.1k+ | PolyForm Perimeter | in daily use, upstream only |
 
 What's different here: **fewer, bigger skills** — one router per domain instead of one repo per
 topic — plus deprecation tracking, Instruments trace analysis, and documented disagreements
 between sources instead of false consensus. Full credit trail in [ATTRIBUTION.md](ATTRIBUTION.md).
-
-**Also in the family:**
-
-- **[ios-simulator-skill](https://github.com/conorluddy/ios-simulator-skill)** by Conor Luddy —
-  ⭐1.2k, MIT. Vendored here as a trimmed edition (his full `LICENSE.md` ships inside the skill).
-- **[swift-ios-skills](https://github.com/dpearson2699/swift-ios-skills)** by dpearson2699 —
-  100+ framework skills, PolyForm Perimeter licensed. In daily use here; **not redistributed** —
-  go upstream for it, it's excellent.
 
 ## 📖 The catalog
 
